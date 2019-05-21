@@ -5,11 +5,18 @@
       <b-row>
         <b-col sm="6" offset="3">
           <QuestionBox
-            v-if="questions.length"
+            v-if="questions.length && index <= 9"
             :currentQuestion="questions[index]"
             :next="next"
             :increment="increment"
           />
+          <div v-if="index > 9">
+            <h4>You completed answering all questions.</h4>
+            <h6>Your result</h6>
+            <p>
+              <b>{{numCorrect}}/{{numTotal}}</b>
+            </p>
+          </div>
         </b-col>
       </b-row>
     </b-container>
